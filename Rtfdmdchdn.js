@@ -659,7 +659,13 @@ $(function () {
   // dark light layout button setting
   $(".layout-color input:radio").change(function () {
     if ($(this).val() == "1") {
+      var d = ($("body").hasClass('sidebar-gone') || $("body").hasClass('sidebar-show') || $("body").hasClass('sidebar-mini')) ? $("body").attr('class').match(/sidebar-(gone|show|mini)/)[0] : '';
       $("body").removeClass();
+      if($(window).outerWidth() <= 1024){
+        $("body").addClass('sidebar-gone');
+      } else {
+        $("body").addClass(d);
+      }
       $("body").addClass("light");
       $("body").addClass("light-sidebar");
       $("body").addClass("theme-white");
@@ -668,7 +674,13 @@ $(function () {
       $(".choose-theme li[title|='white']").addClass("active");
       $(".selectgroup-input[value|='1']").prop("checked", true);
     } else if($(this).val() == '2'){
+      var d = ($("body").hasClass('sidebar-gone') || $("body").hasClass('sidebar-show') || $("body").hasClass('sidebar-mini')) ? $("body").attr('class').match(/sidebar-(gone|show|mini)/)[0] : '';
       $("body").removeClass();
+      if($(window).outerWidth() <= 1024){
+        $("body").addClass('sidebar-gone');
+      } else {
+        $("body").addClass(d);
+      }
       $("body").addClass("dark");
       $("body").addClass("dark-sidebar");
       $("body").addClass("theme-black");
@@ -677,7 +689,6 @@ $(function () {
       $(".choose-theme li[title|='black']").addClass("active");
       $(".selectgroup-input[value|='2']").prop("checked", true);
     } else {
-      
       var d = ($("body").hasClass('sidebar-gone') || $("body").hasClass('sidebar-show') || $("body").hasClass('sidebar-mini')) ? $("body").attr('class').match(/sidebar-(gone|show|mini)/)[0] : '';
       $("body").removeClass();
       if($(window).outerWidth() <= 1024){
@@ -709,7 +720,13 @@ $(function () {
   // restore default to dark theme
   $(".btn-restore-theme").on("click", function () {
     //remove all class from body
-    $("body").removeClass();
+    var d = ($("body").hasClass('sidebar-gone') || $("body").hasClass('sidebar-show') || $("body").hasClass('sidebar-mini')) ? $("body").attr('class').match(/sidebar-(gone|show|mini)/)[0] : '';
+      $("body").removeClass();
+      if($(window).outerWidth() <= 1024){
+        $("body").addClass('sidebar-gone');
+      } else {
+        $("body").addClass(d);
+      }
     jQuery("body").addClass("light");
     jQuery("body").addClass("light-sidebar");
     jQuery("body").addClass("theme-white");
@@ -762,8 +779,7 @@ function detectTheme() {
     // Check if the specific checkbox is checked
     if ($(".selectgroup-input[value|='3']").prop("checked")) {
         var rt = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-      var d = ($("body").hasClass('sidebar-gone') || $("body").hasClass('sidebar-show') || $("body").hasClass('sidebar-mini')) ? $("body").attr('class').match(/sidebar-(gone|show|mini)/)[0] : '';
+        var d = ($("body").hasClass('sidebar-gone') || $("body").hasClass('sidebar-show') || $("body").hasClass('sidebar-mini')) ? $("body").attr('class').match(/sidebar-(gone|show|mini)/)[0] : '';
       $("body").removeClass();
       if($(window).outerWidth() <= 1024){
         $("body").addClass('sidebar-gone');
