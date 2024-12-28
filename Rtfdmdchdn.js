@@ -635,6 +635,7 @@ $(function () {
 
     bodytag.removeClass("theme-" + prevTheme);
     bodytag.addClass("theme-" + $(this).attr("title"));
+    trgdrybb($(this).attr("title"));
   });
 
   // dark light sidebar button setting
